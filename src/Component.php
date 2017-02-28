@@ -22,8 +22,8 @@ class Component
     {
         //configs
         $this->console = $console;
-        $path = '/home/dev/Descargas/';
-        $repo = $route->getMatchedParam('repo');
+//        $path = '/home/dev/Descargas/';
+        $path = $route->getMatchedParam('repo');
         $package = $route->getMatchedParam('package');
         $namespace = $route->getMatchedParam('namespace');               
         $this->create($path, $package,$namespace);
