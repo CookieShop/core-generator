@@ -1,20 +1,25 @@
 <?php
-/**
- * Helper para hacer stream
- * 
- * @license   http://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
- * @author Ing. Eduardo Ortiz
- * 
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
+
 namespace Adteam\Core\Generator;
 
+/**
+ * Description of Clicomponent
+ *
+ * @author dev
+ */
 use Zend\Console\Adapter\AdapterInterface;
 use ZF\Console\Route;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\View\Model\ViewModel;
 use Zend\View\HelperPluginManager;
 
-class Component
+class Clicomponent
 {
     protected $console;
     
@@ -22,7 +27,6 @@ class Component
     {
         //configs
         $this->console = $console;
-//        $path = '/home/dev/Descargas/';
         $path = $route->getMatchedParam('repo');
         $package = $route->getMatchedParam('package');
         $namespace = $route->getMatchedParam('namespace');               
@@ -53,7 +57,7 @@ class Component
         return [
                 [
                     'namefile'=>'README.md',
-                    'data'=>'componente/basic/README.md.phtml',
+                    'data'=>'componente/basic/cli/README.md.phtml',
                     'vars'=>[
                         'namepkg'=>$package,
                         'path'=>$path,
@@ -62,7 +66,7 @@ class Component
                 ],
                 [
                     'namefile'=>'composer.json',
-                    'data'=>'componente/basic/composer.json.phtml',
+                    'data'=>'componente/basic/cli/composer.json.phtml',
                     'vars'=>[
                         'namepkg'=>$package,
                         'path'=>$path,
@@ -71,7 +75,7 @@ class Component
                 ],
                 [
                     'namefile'=>'src/Module.php',
-                    'data'=>'componente/basic/Module.php.phtml',
+                    'data'=>'componente/basic/cli/Module.php.phtml',
                     'vars'=>[
                         'namepkg'=>$package,
                         'path'=>$path,
@@ -80,13 +84,31 @@ class Component
                 ],
                 [
                     'namefile'=>'config/module.config.php',
-                    'data'=>'componente/basic/module.config.php.phtml',
+                    'data'=>'componente/basic/cli/module.config.php.phtml',
                     'vars'=>[
                         'namepkg'=>$package,
                         'path'=>$path,
                         'namespace'=>$namespace
                     ]
-                ]             
+                ],
+                [
+                    'namefile'=>'src/Command.php',
+                    'data'=>'componente/basic/cli/Command.php.phtml',
+                    'vars'=>[
+                        'namepkg'=>$package,
+                        'path'=>$path,
+                        'namespace'=>$namespace
+                    ]
+                ], 
+                [
+                    'namefile'=>'bin/app.php',
+                    'data'=>'componente/basic/cli/app.php.phtml',
+                    'vars'=>[
+                        'namepkg'=>$package,
+                        'path'=>$path,
+                        'namespace'=>$namespace
+                    ]
+                ],               
             ];
     }        
 
@@ -137,6 +159,7 @@ class Component
                 mkdir($dirchild);
                 mkdir($dirchild.'/src');
                 mkdir($dirchild.'/config');
+                mkdir($dirchild.'/bin');
             }  
             $dir = $dirchild;
         }
