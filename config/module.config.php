@@ -11,5 +11,11 @@ return [
         'description' => 'Show welcome message',
         'short_description' => 'Show welcome message',
         'handler' => 'Adteam\Core\Generator\Clicomponent',
-    ],    
+    ],   
+    [
+        'name' => 'create skeleton doctrine repo [<repo>] package [<package>] namespace [<namespace>]',
+        'description' => 'Show welcome message',
+        'short_description' => 'Show welcome message',
+        'handler' => 'Adteam\Core\Generator\Doctrinecomponent',
+    ],      
 ];

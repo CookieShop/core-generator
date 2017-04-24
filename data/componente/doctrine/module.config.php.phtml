@@ -1,0 +1,30 @@
+<?php echo '<?php';?>
+
+$path=  realpath((__DIR__).'/../').'/src/';
+
+return [
+            'doctrine' => [
+                'connection' => [
+                    'orm_default' => [
+                        'driverClass' => \Doctrine\DBAL\Driver\PDOMySql\Driver::class,
+                        'params' => [
+                            'charset' => 'utf8',
+                        ],
+                    ],
+                ],
+                'driver' => [
+                    'Doctrine\Driver\<?php echo $this->items['namespace']?>' => [
+                        'class' => \Doctrine\ORM\Mapping\Driver\AnnotationDriver::class,
+                        'cache' => 'array',
+                        'paths' => [
+                            0 => $path.'/Entity',
+                        ],
+                    ],
+                    'orm_default' => [
+                        'drivers' => [
+                        '<?php echo addslashes($this->items['namespace'])?>' => 'Doctrine\Driver\<?php echo $this->items['namespace']?>',
+                        ],
+                    ],
+                ],
+            ]      
+];
