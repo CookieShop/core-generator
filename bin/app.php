@@ -10,6 +10,10 @@ use ZF\Console\Application;
 
 chdir(realpath(__DIR__.'/../'));
 
+if(!file_exists('vendor/autoload.php')){
+    chdir(realpath(__DIR__.'/../../../../'));
+}
+
 include 'vendor/autoload.php';
 
 $application = new Application(
