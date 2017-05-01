@@ -99,7 +99,25 @@ class Doctrinecomponent
                         'path'=>$path,
                         'namespace'=>$namespace
                     ]
-                ]
+                ],
+                [
+                    'namefile'=>'src/Entity/ZipCodes.php',
+                    'data'=>'componente/doctrine/ZipCodes.php.phtml',
+                    'vars'=>[
+                        'namepkg'=>$package,
+                        'path'=>$path,
+                        'namespace'=>$namespace
+                    ]
+                ],
+                [
+                    'namefile'=>'src/Repository/ZipCodesRepository.php',
+                    'data'=>'componente/doctrine/ZipCodesRepository.php.phtml',
+                    'vars'=>[
+                        'namepkg'=>$package,
+                        'path'=>$path,
+                        'namespace'=>$namespace
+                    ]
+                ]             
             ];
     }        
 

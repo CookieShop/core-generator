@@ -10,6 +10,7 @@ namespace <?php echo $this->items['namespace']?>;
 
 use Zend\ServiceManager\ServiceManager;
 use Doctrine\ORM\EntityManager;
+use <?php echo $this->items['namespace']?>\Entity\ZipCodes;
 
 /**
  * Description of Command
@@ -33,6 +34,16 @@ class Component
     public function __construct(ServiceManager $services)
     {
         $this->services = $services;
+        $this->em = $services->get(EntityManager::class);
     }
+    
+    /**
+     * 
+     * @return type
+     */    
+    public function fetchAll()
+    {
+        return $this->em->getRepository(ZipCodes::class)->fetchAll();
+    }      
 }
 

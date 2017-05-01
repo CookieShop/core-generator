@@ -1,0 +1,27 @@
+<?php echo '<?php';?>
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+namespace <?php echo $this->items['namespace']?>\Repository;
+
+use Doctrine\ORM\EntityRepository;
+
+class ZipCodesRepository extends EntityRepository{
+    /**
+     * 
+     * @return type
+     */
+    public function fetchAll()
+    {
+        return $this
+                ->createQueryBuilder('U')
+                ->select("U.id, U.zipCode, U.location,U.type")
+                ->where('U.zipCode = :z')
+                ->setParameter('z', '01060')                
+                ->getQuery()->getResult();         
+    }
+}
+
