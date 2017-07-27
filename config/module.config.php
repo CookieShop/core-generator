@@ -17,5 +17,11 @@ return [
         'description' => 'Show welcome message',
         'short_description' => 'Show welcome message',
         'handler' => 'Adteam\Core\Generator\Doctrinecomponent',
-    ],      
+    ],  
+    [
+        'name' => 'create skeleton api repo [<repo>] package [<package>] namespace [<namespace>] service [<service>]',
+        'description' => 'Show welcome message',
+        'short_description' => 'Show welcome message',
+        'handler' => 'Adteam\Core\Generator\Apicomponent',
+    ]     
 ];

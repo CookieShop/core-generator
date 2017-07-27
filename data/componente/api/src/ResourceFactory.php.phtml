@@ -1,0 +1,11 @@
+<?php echo '<?php'?>
+
+namespace <?php echo $this->items['namespace']?>\V1\Rest\<?php echo $this->items['service']?>;
+
+class <?php echo $this->items['service']?>ResourceFactory
+{
+    public function __invoke($services)
+    {
+        return new <?php echo $this->items['service']?>Resource($services);
+    }
+}

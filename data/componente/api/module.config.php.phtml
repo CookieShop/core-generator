@@ -1,0 +1,105 @@
+<?php echo '<?php'?>
+
+<?php $endpoint = strtolower($this->items['namespace']).  strtolower($this->items['service'])?>
+
+return array(
+    'service_manager' => array(
+        'factories' => array(
+            '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\<?php echo $this->items['service']?>Resource' => '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\<?php echo $this->items['service']?>ResourceFactory',
+        ),
+    ),
+    'router' => array(
+        'routes' => array(
+            'ejemplo.rest.users' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/<?php echo $endpoint?>[/:<?php echo strtolower($this->items['service'])?>_id]',
+                    'defaults' => array(
+                        'controller' => '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\Controller',
+                    ),
+                ),
+            ),
+        ),
+    ),
+    'zf-versioning' => array(
+        'uri' => array(
+            0 => '<?php echo strtolower($this->items['namespace'])?>.rest.<?php echo strtolower($this->items['service'])?>',
+        ),
+    ),
+    'zf-rest' => array(
+        '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\Controller' => array(
+            'listener' => '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\<?php echo $this->items['service']?>Resource',
+            'route_name' => '<?php  echo strtolower($this->items['namespace'])?>.rest.<?php  echo strtolower($this->items['service'])?>',
+            'route_identifier_name' => '<?php echo strtolower($this->items['service'])?>_id',
+            'collection_name' => '<?php echo strtolower($this->items['service'])?>',
+            'entity_http_methods' => array(),
+            'entity_http_methods' => array(),
+              'entity_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\<?php echo $this->items['service']?>Entity',
+            'collection_class' => '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\\<?php echo $this->items['service']?>\Collection',
+            'service_name' => '<?php echo strtolower($this->items['service'])?>',
+        ),
+    ),
+    'zf-content-negotiation' => array(
+        'controllers' => array(
+            '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\Controller' => 'Json',
+        ),
+        'accept_whitelist' => array(
+            '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\Controller' => array(
+                0 => 'application/vnd.ejemplo.v1+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
+        ),
+        'content_type_whitelist' => array(
+            '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\Controller' => array(
+                0 => 'application/vnd.ejemplo.v1+json',
+                1 => 'application/json',
+            ),
+        ),
+    ),
+    'zf-hal' => array(
+        'metadata_map' => array(
+            '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\<?php echo $this->items['service']?>Entity' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => '<?php  echo strtolower($this->items['namespace'])?>.rest.<?php  echo strtolower($this->items['service'])?>',
+                'route_identifier_name' => '<?php  echo strtolower($this->items['service'])?>_id',
+                'hydrator' => 'Zend\\Hydrator\\ArraySerializable',
+            ),
+            '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\<?php echo $this->items['service']?>Collection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => '<?php  echo strtolower($this->items['namespace'])?>.rest.<?php  echo strtolower($this->items['service'])?>',
+                'route_identifier_name' => '<?php  echo strtolower($this->items['service'])?>_id',
+                'is_collection' => true,
+            ),
+        ),
+    ),
+    'zf-mvc-auth' => array(
+        'authorization' => array(
+            '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\Controller' => array(
+                'collection' => array(
+                    'GET' => true,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+                'entity' => array(
+                    'GET' => true,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ),
+            ),
+        ),
+    ),
+);
