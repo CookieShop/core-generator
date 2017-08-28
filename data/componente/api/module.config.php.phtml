@@ -10,7 +10,7 @@ return array(
     ),
     'router' => array(
         'routes' => array(
-            'ejemplo.rest.users' => array(
+            '<?php echo strtolower($this->items['namespace'])?>.rest.<?php echo strtolower($this->items['service'])?>' => array(
                 'type' => 'Segment',
                 'options' => array(
                     'route' => '/<?php echo $endpoint?>[/:<?php echo strtolower($this->items['service'])?>_id]',
@@ -54,14 +54,14 @@ return array(
         ),
         'accept_whitelist' => array(
             '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\Controller' => array(
-                0 => 'application/vnd.ejemplo.v1+json',
+                0 => 'application/vnd.<?php echo strtolower($this->items['namespace'])?>.v1+json',
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
         ),
         'content_type_whitelist' => array(
             '<?php echo $this->items['namespace']?>\\V1\\Rest\\<?php echo $this->items['service']?>\\Controller' => array(
-                0 => 'application/vnd.ejemplo.v1+json',
+                0 => 'application/vnd.<?php echo strtolower($this->items['namespace'])?>.v1+json',
                 1 => 'application/json',
             ),
         ),
